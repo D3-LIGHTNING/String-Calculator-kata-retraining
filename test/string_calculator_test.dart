@@ -10,11 +10,18 @@ void main() {
       expect(expected, 0);
     });
 
-    test("Returns 1 for a single number string", () {
+    test("Returns the sum for a single number string", () {
       StringCalculator solution = StringCalculator();
       int expected = solution.add("1");
 
       expect(expected, 1);
+    });
+
+    test("Returns the sum for a two digit number string", () {
+      StringCalculator solution = StringCalculator();
+      int expected = solution.add("1,2");
+
+      expect(expected, 3);
     });
   });
 }
