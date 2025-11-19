@@ -10,10 +10,17 @@ class StringCalculator {
 
     int sum = 0;
 
-    for (var element in numberParser.parseInput(input)) {
-      sum += element;
+    for (var number in numberParser.parseInput(input)) {
+      _assertNumberIsNonNegative(number);
+      sum += number;
     }
 
     return sum;
+  }
+
+  void _assertNumberIsNonNegative(int number) {
+    if (number < 0) {
+      throw Exception("Negative numbers are not allowed $number");
+    }
   }
 }
