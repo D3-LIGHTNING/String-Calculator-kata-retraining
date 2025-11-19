@@ -33,4 +33,13 @@ void main() {
       expect(expected, 6);
     });
   });
+
+  group("String calculator step 3 group", () {
+    test("Returns sum of numbers even those seperated by \n", () {
+      StringCalculator solution = StringCalculator();
+      int expected = solution.add("1\n2,3");
+
+      expect(expected, 6);
+    });
+  });
 }
