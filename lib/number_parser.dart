@@ -1,20 +1,20 @@
 import 'package:string_calculator_kata_retraining/delimiter_provider.dart';
 
-/// Parses a string using the given list of [DelimiterProvider]s.
-/// For more info about [DelimiterProvider]s, read it's documentation.
+/// Parses a string using the given list of [Delimiter]s.
+/// For more info about [Delimiter]s, read it's documentation.
 class NumberParser {
-  final List<DelimiterProvider> _providers;
+  final List<Delimiter> _delimiters;
 
-  const NumberParser({required List<DelimiterProvider> providers})
-    : _providers = providers;
+  const NumberParser({required List<Delimiter> delimiters})
+    : _delimiters = delimiters;
 
-  /// Parses a string input using the given list of [DelimiterProvider]s and return the numbers 
+  /// Parses a string input using the given list of [Delimiter]s and return the numbers
   /// found within the string input as a list.
   List<int> parseInput(String input) {
     String transformedInput = input;
     List<String> delimters = [];
 
-    for (DelimiterProvider provider in _providers) {
+    for (Delimiter provider in _delimiters) {
       delimters.addAll(provider.getDelimitersFromInput(transformedInput));
       transformedInput = provider.transformInput(transformedInput);
     }

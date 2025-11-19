@@ -7,7 +7,7 @@ void main() {
   group("String calculator step 1 group", () {
     test("Returns 0 on empty string", () {
       StringCalculator solution = StringCalculator(
-        numberParser: NumberParser(providers: [DefaultDelimiterProvider()]),
+        numberParser: NumberParser(delimiters: [DefaultDelimiter()]),
       );
       int expected = solution.calculate("");
 
@@ -16,7 +16,7 @@ void main() {
 
     test("Returns the sum for a single number string", () {
       StringCalculator solution = StringCalculator(
-        numberParser: NumberParser(providers: [DefaultDelimiterProvider()]),
+        numberParser: NumberParser(delimiters: [DefaultDelimiter()]),
       );
       int expected = solution.calculate("1");
 
@@ -25,7 +25,7 @@ void main() {
 
     test("Returns the sum for a two digit number string", () {
       StringCalculator solution = StringCalculator(
-        numberParser: NumberParser(providers: [DefaultDelimiterProvider()]),
+        numberParser: NumberParser(delimiters: [DefaultDelimiter()]),
       );
       int expected = solution.calculate("1,2");
 
@@ -36,7 +36,7 @@ void main() {
   group("String calculator step 2 group", () {
     test("Returns sum of any number of integers within the input", () {
       StringCalculator solution = StringCalculator(
-        numberParser: NumberParser(providers: [DefaultDelimiterProvider()]),
+        numberParser: NumberParser(delimiters: [DefaultDelimiter()]),
       );
       int expected = solution.calculate("1,2,3");
 
@@ -47,7 +47,7 @@ void main() {
   group("String calculator step 3 group", () {
     test("Returns sum of numbers even those seperated by \n", () {
       StringCalculator solution = StringCalculator(
-        numberParser: NumberParser(providers: [DefaultDelimiterProvider()]),
+        numberParser: NumberParser(delimiters: [DefaultDelimiter()]),
       );
       int expected = solution.calculate("1\n2,3");
 
@@ -61,7 +61,7 @@ void main() {
       () {
         StringCalculator solution = StringCalculator(
           numberParser: NumberParser(
-            providers: [DefaultDelimiterProvider(), CustomDelimiterProvider()],
+            delimiters: [DefaultDelimiter(), CustomDelimiter()],
           ),
         );
 
@@ -75,7 +75,7 @@ void main() {
   group("String calculator step 5", () {
     test("Throws an excpetion if negative numbers are encountered", () {
       StringCalculator solution = StringCalculator(
-        numberParser: NumberParser(providers: [DefaultDelimiterProvider()]),
+        numberParser: NumberParser(delimiters: [DefaultDelimiter()]),
       );
 
       expect(() => solution.calculate("1,2,-3"), throwsException);
