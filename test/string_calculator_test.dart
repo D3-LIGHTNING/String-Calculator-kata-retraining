@@ -60,7 +60,7 @@ void main() {
       "Returns sum of numbers even those seperated by custom separators",
       () {
         StringCalculator solution = StringCalculator(
-          NumberParser([DefaultDelimiterProvider()]),
+          NumberParser([DefaultDelimiterProvider(), CustomDelimiterProvider()]),
         );
 
         int expected = solution.calculate("//;\n1;2;3");

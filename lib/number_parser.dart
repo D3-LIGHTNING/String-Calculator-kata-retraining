@@ -6,18 +6,27 @@ class NumberParser {
   const NumberParser(this.delimiterProviders);
 
   List<int> parseInput(String input) {
-    if (delimiterProviders.isEmpty) {
-      throw Exception("No delimiter providers where found");
-    }
-
+    String transformedInput = input;
     List<String> delimters = [];
 
     for (DelimiterProvider provider in delimiterProviders) {
-      delimters.addAll(provider.getDelimitersFromInput(input));
+      delimters.addAll(provider.getDelimitersFromInput(transformedInput));
+      transformedInput = provider.transformInput(transformedInput);
     }
 
     RegExp regExp = RegExp(delimters.map(RegExp.escape).join("|"));
 
-    return input.split(regExp).map((e) => int.parse(e)).toList();
+    List<String> numbers = transformedInput.split(regExp);
+    List<int> integerNumbers = [];
+
+    for (String number in numbers) {
+      int? integerNumber = int.tryParse(number);
+
+      if (integerNumber != null) {
+        integerNumbers.add(integerNumber);
+      }
+    }
+
+    return integerNumbers;
   }
 }
