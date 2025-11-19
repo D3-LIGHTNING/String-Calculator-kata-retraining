@@ -1,13 +1,12 @@
 class StringCalculator {
-  int add(String numbers) {
+  int add(String input) {
+    if (input.isEmpty) return 0;
+
     int sum = 0;
+    List<String> numbers = input.split(",");
 
-    if (numbers.isNotEmpty) {
-      sum += int.parse(numbers[0]);
-
-      if (numbers.length > 1) {
-        sum += int.parse(numbers[2]);
-      }
+    for (String number in numbers) {
+      sum += int.parse(number);
     }
 
     return sum;
