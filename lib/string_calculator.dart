@@ -3,7 +3,7 @@ import 'package:string_calculator_kata_retraining/number_parser.dart';
 class StringCalculator {
   final NumberParser numberParser;
 
-  const StringCalculator(this.numberParser);
+  const StringCalculator({required this.numberParser});
 
   int calculate(String input) {
     if (input.isEmpty) return 0;

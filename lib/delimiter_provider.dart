@@ -24,7 +24,7 @@ class CustomDelimiterProvider extends DelimiterProvider {
   List<String> getDelimitersFromInput(String input) {
     List<String> delimiters = [];
 
-    if (input.startsWith("//")) {
+    if (_canHandleInput(input)) {
       delimiters.add(input.substring(2, input.indexOf("\n")));
     }
 
@@ -33,10 +33,14 @@ class CustomDelimiterProvider extends DelimiterProvider {
 
   @override
   String transformInput(String input) {
-    if (input.startsWith("//")) {
+    if (_canHandleInput(input)) {
       return input.substring(input.indexOf("\n") + 1);
     }
 
     return input;
+  }
+
+  bool _canHandleInput(String input) {
+    return input.startsWith("/");
   }
 }
