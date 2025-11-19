@@ -1,12 +1,17 @@
+import 'package:string_calculator_kata_retraining/number_parser.dart';
+
 class StringCalculator {
-  int add(String input) {
+  final NumberParser numberParser;
+
+  const StringCalculator(this.numberParser);
+
+  int calculate(String input) {
     if (input.isEmpty) return 0;
 
     int sum = 0;
-    List<String> numbers = input.split(RegExp('[, \n]'));
 
-    for (String number in numbers) {
-      sum += int.parse(number);
+    for (var element in numberParser.parseInput(input)) {
+      sum += element;
     }
 
     return sum;
