@@ -24,4 +24,13 @@ void main() {
       expect(expected, 3);
     });
   });
+
+  group("String calculator step 2 group", () {
+    test("Returns sum of any number of integers within the input", () {
+      StringCalculator solution = StringCalculator();
+      int expected = solution.add("1,2,3");
+
+      expect(expected, 6);
+    });
+  });
 }
