@@ -54,4 +54,19 @@ void main() {
       expect(expected, 6);
     });
   });
+
+  group("String calculator step 4 group", () {
+    test(
+      "Returns sum of numbers even those seperated by custom separators",
+      () {
+        StringCalculator solution = StringCalculator(
+          NumberParser([DefaultDelimiterProvider()]),
+        );
+
+        int expected = solution.calculate("//;\n1;2;3");
+
+        expect(expected, 6);
+      },
+    );
+  });
 }
