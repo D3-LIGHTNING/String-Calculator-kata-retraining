@@ -13,18 +13,22 @@ class StringCalculator {
     if (input.isEmpty) return 0;
 
     int sum = 0;
+    List<int> negativeNumbers = [];
 
     for (var number in _numberParser.parseInput(input)) {
-      _assertNumberIsNonNegative(number);
-      sum += number;
+      number < 0 ? negativeNumbers.add(number) : sum += number;
     }
+
+    _assertNumberIsNonNegative(negativeNumbers);
 
     return sum;
   }
 
-  void _assertNumberIsNonNegative(int number) {
-    if (number < 0) {
-      throw Exception("Negative numbers are not allowed $number");
+  void _assertNumberIsNonNegative(List<int> negativeNumbers) {
+    if (negativeNumbers.isNotEmpty) {
+      throw Exception(
+        "Negative numbers are not allowed ${negativeNumbers.join(",")}",
+      );
     }
   }
 }
