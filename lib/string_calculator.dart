@@ -19,16 +19,15 @@ class StringCalculator {
     List<int> negativeNumbers = [];
 
     for (var number in _numberParser.parseInput(input)) {
-      number < 0 ? negativeNumbers.add(number) : sum += number;
+      number < 0
+          ? negativeNumbers.add(number)
+          : sum += (number > 1000 ? 0 : number);
     }
 
     _assertNumberIsNonNegative(negativeNumbers);
 
     return sum;
   }
-
-  // Returns the number of times the 'calculate' method has been called from within this instance.
-  int getCalledCount() => _callCount;
 
   void _assertNumberIsNonNegative(List<int> negativeNumbers) {
     if (negativeNumbers.isNotEmpty) {
@@ -37,4 +36,7 @@ class StringCalculator {
       );
     }
   }
+
+  // Returns the number of times the 'calculate' method has been called from within this instance.
+  int getCalledCount() => _callCount;
 }
