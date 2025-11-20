@@ -6,7 +6,7 @@ import 'package:test/test.dart';
 void main() {
   group("String calculator step 1 group", () {
     test("Returns 0 on empty string", () {
-       StringCalculator solution = StringCalculator(
+      StringCalculator solution = StringCalculator(
         numberParser: NumberParser(delimiters: [DefaultDelimiter()]),
       );
       int expected = solution.calculate("");
@@ -15,7 +15,7 @@ void main() {
     });
 
     test("Returns the sum for a single number string", () {
-       StringCalculator solution = StringCalculator(
+      StringCalculator solution = StringCalculator(
         numberParser: NumberParser(delimiters: [DefaultDelimiter()]),
       );
       int expected = solution.calculate("1");
@@ -24,7 +24,7 @@ void main() {
     });
 
     test("Returns the sum for a two digit number string", () {
-       StringCalculator solution = StringCalculator(
+      StringCalculator solution = StringCalculator(
         numberParser: NumberParser(delimiters: [DefaultDelimiter()]),
       );
       int expected = solution.calculate("1,2");
@@ -35,7 +35,7 @@ void main() {
 
   group("String calculator step 2 group", () {
     test("Returns sum of any number of integers within the input", () {
-       StringCalculator solution = StringCalculator(
+      StringCalculator solution = StringCalculator(
         numberParser: NumberParser(delimiters: [DefaultDelimiter()]),
       );
       int expected = solution.calculate("1,2,3");
@@ -46,7 +46,7 @@ void main() {
 
   group("String calculator step 3 group", () {
     test("Returns sum of numbers even those seperated by \n", () {
-       StringCalculator solution = StringCalculator(
+      StringCalculator solution = StringCalculator(
         numberParser: NumberParser(delimiters: [DefaultDelimiter()]),
       );
       int expected = solution.calculate("1\n2,3");
@@ -59,7 +59,7 @@ void main() {
     test(
       "Returns sum of numbers even those seperated by custom separators",
       () {
-         StringCalculator solution = StringCalculator(
+        StringCalculator solution = StringCalculator(
           numberParser: NumberParser(
             delimiters: [DefaultDelimiter(), CustomDelimiter()],
           ),
@@ -74,7 +74,7 @@ void main() {
 
   group("String calculator step 5", () {
     test("Throws an excpetion if negative numbers are encountered", () {
-       StringCalculator solution = StringCalculator(
+      StringCalculator solution = StringCalculator(
         numberParser: NumberParser(delimiters: [DefaultDelimiter()]),
       );
 
@@ -87,7 +87,7 @@ void main() {
       "Throws an exception if negative numbers of "
       "multiple count is found with all of them in the exception message",
       () {
-         StringCalculator solution = StringCalculator(
+        StringCalculator solution = StringCalculator(
           numberParser: NumberParser(delimiters: [DefaultDelimiter()]),
         );
 
@@ -108,7 +108,7 @@ void main() {
     test(
       "returns the calculate method called count upon calling getCalledCount",
       () {
-         StringCalculator solution = StringCalculator(
+        StringCalculator solution = StringCalculator(
           numberParser: NumberParser(
             delimiters: [DefaultDelimiter(), CustomDelimiter()],
           ),
@@ -123,5 +123,19 @@ void main() {
         expect(calledCount, 2);
       },
     );
+  });
+
+  group("String calculator step 8", () {
+    test("ignores number greater than 1000", () {
+      StringCalculator solution = StringCalculator(
+        numberParser: NumberParser(
+          delimiters: [DefaultDelimiter(), CustomDelimiter()],
+        ),
+      );
+
+      int expected = solution.calculate("1,1001,3,2500");
+
+      expect(expected, 4);
+    });
   });
 }
