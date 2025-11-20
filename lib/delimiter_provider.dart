@@ -24,6 +24,8 @@ class DefaultDelimiter extends Delimiter {
 
 /// Custom delimiter provider to handle custom seperaters provided in the input.
 class CustomDelimiter extends Delimiter {
+  const CustomDelimiter();
+
   @override
   List<String> getDelimitersFromInput(String input) {
     return _canHandleInput(input)
