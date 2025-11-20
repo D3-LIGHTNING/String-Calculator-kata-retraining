@@ -24,6 +24,11 @@ class StringCalculator {
     return sum;
   }
 
+  // Returns the number of times the 'calculate' method has been called from within this instance.
+  int getCalledCount() {
+    return 0;
+  }
+
   void _assertNumberIsNonNegative(List<int> negativeNumbers) {
     if (negativeNumbers.isNotEmpty) {
       throw Exception(

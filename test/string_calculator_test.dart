@@ -88,9 +88,7 @@ void main() {
       "multiple count is found with all of them in the exception message",
       () {
         const StringCalculator solution = StringCalculator(
-          numberParser: NumberParser(
-            delimiters: [DefaultDelimiter(), CustomDelimiter()],
-          ),
+          numberParser: NumberParser(delimiters: [DefaultDelimiter()]),
         );
 
         Object? exception;
@@ -102,6 +100,27 @@ void main() {
         }
 
         expect((exception?.toString().contains("-3,-4,-5")) ?? false, true);
+      },
+    );
+  });
+
+  group("String calculator step 7", () {
+    test(
+      "returns the calculate method called count upon calling getCalledCount",
+      () {
+        const StringCalculator solution = StringCalculator(
+          numberParser: NumberParser(
+            delimiters: [DefaultDelimiter(), CustomDelimiter()],
+          ),
+        );
+
+        solution.calculate("1,2,3");
+
+        solution.calculate("1,2,5,10");
+
+        int calledCount = solution.getCalledCount();
+
+        expect(calledCount, 2);
       },
     );
   });
